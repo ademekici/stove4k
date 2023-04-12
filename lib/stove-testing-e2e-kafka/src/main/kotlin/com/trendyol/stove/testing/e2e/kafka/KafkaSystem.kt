@@ -42,7 +42,7 @@ data class KafkaExposedConfiguration(
     val ports: List<Int>,
     val firstMappedPort: Int,
 ) : ExposedConfiguration {
-    val communicationPort: Int = boostrapServers.removePrefix("PLAINTEXT://").split(":")[1].toInt()
+    val communicationPort: Int = bootstrapServers.removePrefix("PLAINTEXT://").split(":")[1].toInt()
 }
 
 data class KafkaSystemOptions(
@@ -125,11 +125,11 @@ class KafkaSystem(
         exposedConfiguration = state.capture {
             context.container.start()
             KafkaExposedConfiguration(
-            context.container.bootstrapServers,
-            context.container.host,
-            context.container.exposedPorts,
-            context.container.firstMappedPort
-        )
+                context.container.bootstrapServers,
+                context.container.host,
+                context.container.exposedPorts,
+                context.container.firstMappedPort
+            )
         }
         adminClient = createAdminClient(exposedConfiguration)
         kafkaProducer = createProducer(exposedConfiguration)
