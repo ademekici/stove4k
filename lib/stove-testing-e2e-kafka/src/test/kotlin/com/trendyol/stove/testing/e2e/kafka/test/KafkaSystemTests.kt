@@ -1,3 +1,5 @@
+package com.trendyol.stove.testing.e2e.kafka.test
+
 import com.trendyol.stove.testing.e2e.kafka.kafka
 import com.trendyol.stove.testing.e2e.kafka.setup.DomainEvents.ProductCreated
 import com.trendyol.stove.testing.e2e.kafka.setup.DomainEvents.ProductFailingCreated
